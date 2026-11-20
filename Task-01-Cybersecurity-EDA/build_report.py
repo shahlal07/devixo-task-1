@@ -129,7 +129,7 @@ def img_block(name, caption, note):
         status = ""
     else:
         body = ('<div class="ph"><strong>CHART PENDING</strong><br>'
-                f'Generate <code>visualizations/{name}.png</code> by running the notebook in Colab.</div>')
+                f'Generate <code>visualizations/{name}.png</code> by running the notebook.</div>')
         status = ' class="pending"'
     return f"""
     <figure{status}>
@@ -241,7 +241,7 @@ def build_html(draft: bool):
     <tr><td>Internship Domain</td><td>AI/ML — Cybersecurity</td></tr>
     <tr><td>Program</td><td>Devixo Solutions AI/ML Internship</td></tr>
     <tr><td>Submission Date</td><td>22 November 2026</td></tr>
-    <tr><td>Environment</td><td>Google Colab (Python 3)</td></tr>
+    <tr><td>Environment</td><td>Jupyter Notebook (Python 3)</td></tr>
   </table></div>
 </section>
 
@@ -283,7 +283,7 @@ that have nothing to do with the brand it imitates. Each of those is something a
 <p>This report is my analysis of a public dataset of 11,055 websites, each described by 30 of those measurable
 properties. I loaded the file, checked what was actually in it, cleaned it, and then worked through descriptive
 statistics, correlations and ten charts before writing down what the numbers showed. Everything runs in Python
-with Pandas, NumPy, Matplotlib and Seaborn, inside Google Colab.</p>
+with Pandas, NumPy, Matplotlib and Seaborn, in a Jupyter notebook.</p>
 
 <h2>2. Problem Statement</h2>
 <p>A security team receives far more suspicious URLs in a day than it can open by hand. Before anything
