@@ -484,7 +484,7 @@ before any analysis happens, summary statistics have to be read in the context o
 correlation is not evidence of predictive value.</p>
 
 <h2>22. GitHub Repository Link</h2>
-<p>Repository: <code>https://github.com/shahlal07/task1-phishing-website-eda</code></p>
+<p>Repository: <code>https://github.com/shahlal07/devixo-task-1</code></p>
 <p>The repository holds the notebook, the dataset, the visualization images, this report and a README that
 explains the workflow and how to run it.</p>
 </section>

@@ -12,7 +12,7 @@ Agents: read this before acting, and append to **Decisions** when you make one.
 | Area | Status |
 |---|---|
 | Task 01 (Phishing EDA) | **Complete and verified** — awaiting submission |
-| Task 01 GitHub submission repo | **Public** — https://github.com/shahlal07/task1-phishing-website-eda |
+| Task 01 GitHub submission repo | **Public** — https://github.com/shahlal07/devixo-task-1 |
 | Task 01 Google Drive upload | **Pending** (owner action) |
 | Cyber Red-Team AI | Stage 0 — docs and roadmap only, no code |
 | Research notes | Empty scaffolding |
@@ -91,7 +91,7 @@ Heavy overlap — 64.1% of phishing and 42.1% of legitimate fall in the 7–11 b
 | 7 | This repo is a **workspace bridge**, not a submission repo | Owner requirement: keep submission artifacts separate from the working bridge |
 | 8 | Prose edits go through the `humanize` skill | Installed `ccf/humanize` (commit `db51ff3`) to `~/.config/opencode/skills/humanize` with a local override section: preserve meaning/numbers, clear student-level academic English, invent nothing, **no detector-evasion tuning**. Edit prose in `build_report.py`, then rerun `--final`; never hand-edit the PDF |
 | 9 | Report prose rewritten in the owner's voice; roll-number row and References page removed | Owner request. Em-dash density fell 13.7 → 4.0 per 1k words, sentences over 30 words 8.2% → 4.2%, AI-cliché wordlist 0.0/1k. All numbers unchanged. Dataset attribution still lives in Section 5 (authors, DOI, licence) and `data/README.md` |
-| 10 | Submission repo published as a **separate public repo** | `task1-phishing-website-eda`, pushed from a temp copy so this workspace stays a single repo with no nested `.git` |
+| 10 | Submission repo published as a **separate public repo** | `devixo-task-1`, pushed from a temp copy so this workspace stays a single repo with no nested `.git` |
 
 ---
 
