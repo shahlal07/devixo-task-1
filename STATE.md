@@ -12,7 +12,7 @@ Agents: read this before acting, and append to **Decisions** when you make one.
 | Area | Status |
 |---|---|
 | Task 01 (Phishing EDA) | **Complete and verified** — awaiting submission |
-| Task 01 GitHub submission repo | **Not created** (deliberately separate from this repo) |
+| Task 01 GitHub submission repo | **Public** — https://github.com/shahlal07/task1-phishing-website-eda |
 | Task 01 Google Drive upload | **Pending** (owner action) |
 | Cyber Red-Team AI | Stage 0 — docs and roadmap only, no code |
 | Research notes | Empty scaffolding |
@@ -90,15 +90,17 @@ Heavy overlap — 64.1% of phishing and 42.1% of legitimate fall in the 7–11 b
 | 6 | Report built via HTML + headless Chrome | No LaTeX/pandoc/wkhtmltopdf installed; Chrome is present and produces clean PDFs |
 | 7 | This repo is a **workspace bridge**, not a submission repo | Owner requirement: keep submission artifacts separate from the working bridge |
 | 8 | Prose edits go through the `humanize` skill | Installed `ccf/humanize` (commit `db51ff3`) to `~/.config/opencode/skills/humanize` with a local override section: preserve meaning/numbers, clear student-level academic English, invent nothing, **no detector-evasion tuning**. Edit prose in `build_report.py`, then rerun `--final`; never hand-edit the PDF |
+| 9 | Report prose rewritten in the owner's voice; roll-number row and References page removed | Owner request. Em-dash density fell 13.7 → 4.0 per 1k words, sentences over 30 words 8.2% → 4.2%, AI-cliché wordlist 0.0/1k. All numbers unchanged. Dataset attribution still lives in Section 5 (authors, DOI, licence) and `data/README.md` |
+| 10 | Submission repo published as a **separate public repo** | `task1-phishing-website-eda`, pushed from a temp copy so this workspace stays a single repo with no nested `.git` |
 
 ---
 
 ## Pending work
 
 **Task 01 (owner actions)**
-1. Push the submission repo separately: `gh repo create task1-phishing-website-eda --public --source=Task-01-Cybersecurity-EDA --push` (needs the nested `.git` restored or a fresh init).
-2. Upload `Shahlal_Jaffir_Task1.pdf` to Google Drive, share **Anyone with the link → Viewer**.
-3. Paste both links into the Devixo form. Deadline **22 Nov 2026 00:00 UTC**.
+1. Upload `Shahlal_Jaffir_Task1.pdf` to Google Drive, share **Anyone with the link → Viewer**.
+2. Paste the repo link and the Drive link into the Devixo form. Deadline **22 Nov 2026 00:00 UTC**.
+3. Optional: read the report once end to end so every section is explainable in review.
 
 **Cyber Red-Team AI**
 - Stage 1 not started: cybersecurity fundamentals notes, dataset shortlist with licence and size checks.
@@ -108,10 +110,10 @@ Heavy overlap — 64.1% of phishing and 42.1% of legitimate fall in the 7–11 b
 
 ## Known gaps / risks
 
-1. `reports/Shahlal_Jaffir_Task1.pdf` section 22 still contains `[GITHUB_REPOSITORY_URL]` — the submission repo does not exist yet.
-2. Screenshots are renders, not Colab UI captures. Rubric asks for evidence of work; content is genuine but the interface differs.
-3. Roll number is unknown — title page shows `—`.
-4. Nested repo history: `Task-01-Cybersecurity-EDA/.git` was moved to `.git-backup-task01/` when this workspace repo was created. Restore it before pushing a standalone submission repo, or re-init there.
+1. Screenshots are renders, not Colab UI captures. Rubric asks for evidence of work; content is genuine but the interface differs.
+2. The roll-number field was removed from the title page at the owner's request, so the PDF identifies the student by name only.
+3. The submission repo was pushed from a temp copy, so local edits to `Task-01-Cybersecurity-EDA/` do not reach it automatically. Re-copy and push when the PDF changes.
+4. Nested repo history: `Task-01-Cybersecurity-EDA/.git` was moved to `.git-backup-task01/` when this workspace repo was created.
 
 ---
 
