@@ -89,6 +89,7 @@ Heavy overlap — 64.1% of phishing and 42.1% of legitimate fall in the 7–11 b
 | 5 | Screenshots rendered from real executed cells | Genuine code and output; authentic Colab UI captures not available without owner's session |
 | 6 | Report built via HTML + headless Chrome | No LaTeX/pandoc/wkhtmltopdf installed; Chrome is present and produces clean PDFs |
 | 7 | This repo is a **workspace bridge**, not a submission repo | Owner requirement: keep submission artifacts separate from the working bridge |
+| 8 | Prose edits go through the `humanize` skill | Installed `ccf/humanize` (commit `db51ff3`) to `~/.config/opencode/skills/humanize` with a local override section: preserve meaning/numbers, clear student-level academic English, invent nothing, **no detector-evasion tuning**. Edit prose in `build_report.py`, then rerun `--final`; never hand-edit the PDF |
 
 ---
 
