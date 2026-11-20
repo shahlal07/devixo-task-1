@@ -1,0 +1,77 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Secrets & credentials ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.*
+credentials.*
+config.local.*
+*.keystore
+
+# --- Jupyter ---
+*.ipynb_checkpoints
+
+# --- Large generated artifacts ---
+*.csv
+*.parquet
+*.feather
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.onnx
+*.pt
+*.pth
+*.gguf
+*.bin
+!requirements*.txt
+
+# Datasets are NOT committed (license/redistribution + disk policy).
+# Acquisition instructions live in data/README.md instead.
+# Exception: Task 01 requires the dataset in the repository, and the phishing
+# dataset is small (~800 KB) and CC BY 4.0 licensed, so it is committed.
+data/*
+!data/README.md
+!data/phishing_dataset.csv
+datasets/*
+!datasets/README.md
+
+# Reports/visualizations ARE committed for Task 01 - the assignment rubric
+# requires the PDF report, visualization images and screenshots in the repo.
+# Intermediate build artifacts stay out.
+reports/_report_build.html
+reports/*_DRAFT*.pdf
+task01_visualizations.zip
+_shots_html/
+_cell_outputs.json
+_run_notebook.py
+_capture_cells.py
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs & temp ---
+*.log
+tmp/
+temp/
+.cache/
+
+# --- Local repo backup (not part of the bridge) ---
+.git-backup-task01/

@@ -1,0 +1,28 @@
+# Cyber-Red-Team-AI — dependencies
+# Keep lightweight: install only what a stage actually needs.
+# Heavy / GPU packages (torch, transformers) belong in Google Colab, not here.
+
+# --- Stage 1-2: data handling ---
+pandas>=2.2
+numpy>=2.0
+
+# --- analysis & visualization ---
+matplotlib>=3.9
+seaborn>=0.13
+
+# --- notebooks ---
+jupyter>=1.1
+notebook>=7.2
+
+# --- later stages (uncomment when a stage requires them) ---
+# scikit-learn>=1.5      # classical baselines / embeddings evaluation
+# fastapi>=0.115         # interface stage (Stage 10)
+# uvicorn>=0.30
+# httpx>=0.27            # tool calling / API clients
+# beautifulsoup4>=4.12   # web content parsing (authorized targets only)
+# python-dotenv>=1.0     # local secrets loading (never commit .env)
+
+# --- explicitly NOT installed locally (Colab instead) ---
+# torch
+# transformers
+# datasets

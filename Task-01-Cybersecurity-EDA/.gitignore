@@ -1,0 +1,38 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- Secrets ---
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+credentials.*
+
+# --- Build intermediates (regenerated on each run) ---
+_shots_html/
+_cell_outputs.json
+_run_notebook.py
+_capture_cells.py
+reports/_report_build.html
+reports/*_DRAFT*.pdf
+task01_visualizations.zip
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Logs ---
+*.log
