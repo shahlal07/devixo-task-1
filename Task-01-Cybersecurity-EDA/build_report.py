@@ -9,7 +9,7 @@ import os
 import subprocess
 import sys
 
-ROOT = r"E:\Devixo\Task-01-Cybersecurity-EDA"
+ROOT = os.path.dirname(os.path.abspath(__file__))
 VIS = os.path.join(ROOT, "visualizations")
 REPORTS = os.path.join(ROOT, "reports")
 SHOTS = os.path.join(ROOT, "screenshots")

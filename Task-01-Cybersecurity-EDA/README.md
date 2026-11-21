@@ -11,7 +11,9 @@ Perform a reproducible Exploratory Data Analysis (EDA) on the **UCI Phishing Web
 
 ## Dataset — UCI Phishing Websites
 
-This dataset, donated by Mohammad & McCluskey (2012) to the UCI Machine Learning Repository (ID 327), contains 11,055 websites described by 30 rule-based security features.
+This dataset, donated by Mohammad & McCluskey (2012) to the UCI Machine Learning Repository (ID 327), contains 11,055 websites described by 30 rule-based security features. It is distributed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
+
+**DOI:** `10.24432/C51W2X`
 
 | Verified fact | Value |
 |---|---|
