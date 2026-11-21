@@ -22,28 +22,28 @@ FIGURES = [
      "Phishing sites sit further right, with a median of 10 failed checks against 7 for legitimate ones. "
      "The two distributions still overlap a lot, so the total count on its own is only a weak-to-moderate separator."),
     ("18_02_bar_top_correlations", "Bar chart — absolute correlation of each feature with the class label",
-     "SSL state (0.69) and external anchor URLs (0.68) are far ahead of everything else. After those two the "
-     "values drop to 0.38 and below."),
-    ("18_03_pie_class_balance", "Pie chart — class balance after duplicate removal",
-     "After deduplication the split is almost even: 3,019 phishing sites (51.62%) and 2,830 legitimate ones (48.38%)."),
+     "SSL state (0.71) and external anchor URLs (0.69) are far ahead of everything else. After those two the "
+     "values drop to 0.35 and below."),
+    ("18_03_pie_class_balance", "Pie chart — class balance (Full dataset)",
+     "The full dataset of 11,055 records is composed of 4,898 phishing sites (44.31%) and 6,157 legitimate ones (55.69%)."),
     ("18_04_scatter_ssl_vs_anchor", "Scatter plot — SSL state vs external anchor URL",
      "The corner with an invalid certificate and off-site anchors is almost entirely phishing. The opposite corner, "
      "valid certificate and same-site anchors, is almost entirely legitimate."),
     ("18_05_line_threshold_rates", "Line chart — share of each class at or above a risk-signal threshold",
-     "The gap peaks at a threshold of 8, where 82.0% of phishing sites qualify against 47.8% of legitimate ones. "
+     "The gap peaks at a threshold of 8, where 82.7% of phishing sites qualify against 42.0% of legitimate ones. "
      "Past 12 the lines converge, which is the usual recall and false-positive trade-off."),
     ("18_06_box_risk_signals", "Box plot — risk signals by class",
-     "The medians differ, 10 against 7, but the interquartile ranges overlap (8–12 and 6–11). Phishing also has "
+     "The medians differ, 10 against 7, but the interquartile ranges overlap (8–12 and 5–10). Phishing also has "
      "the longer upper tail, reaching 25."),
     ("18_07_heatmap_correlations", "Correlation heatmap — twelve strongest features and the class label",
      "Most of the cells between two features are pale. The strong predictors are not simply restating each other, "
      "which is what makes them worth keeping."),
     ("18_08_countplot_ssl_state", "Count plot — websites per SSL state, split by class",
-     "An invalid SSL state appears on 61.7% of phishing sites and on only 9.3% of legitimate ones."),
+     "An invalid SSL state appears on 62.3% of phishing sites and on only 8.2% of legitimate ones."),
     ("18_09_pairplot_features", "Pair plot — strongest features and the derived risk score",
      "SSL state and external anchor URL split the two classes more cleanly than the combined risk score does."),
     ("18_10_violin_risk_signals", "Violin plot — density of risk signals by class",
-     "The phishing density peaks at 8 to 9 failed checks, the legitimate density at 6 to 7."),
+     "The phishing density peaks at 9 failed checks, the legitimate density at 6."),
 ]
 
 FEATURE_ROWS = [
@@ -80,41 +80,41 @@ FEATURE_ROWS = [
 ]
 
 INSIGHTS = [
-    ("Almost half the rows are duplicates, and they are not evenly spread.",
-     "Of 11,055 rows, 5,206 (47.1%) repeat a row already in the file. The repeats fall mostly on the legitimate "
-     "class: 3,327 of them against 1,879 phishing rows. Deduplication therefore moves the split from "
-     "44.31% / 55.69% to 51.62% / 48.38%."),
-    ("After cleaning, the classes are nearly even.",
-     "The cleaned data holds 3,019 phishing sites (51.62%) and 2,830 legitimate ones (48.38%), a ratio of 1.07 : 1. "
-     "That is close enough that resampling would add complexity without fixing anything."),
+    ("Repeated feature vectors account for 47.1% of the data.",
+     "Of 11,055 rows, 5,206 repeat a feature vector already present. Because there are no unique website identifiers, "
+     "the primary analysis uses the full 11,055-row dataset to avoid assuming these are redundant websites. "
+     "Deduplication is used only for sensitivity analysis."),
+    ("Class distribution is moderately imbalanced.",
+     "The full dataset contains 4,898 phishing sites (44.31%) and 6,157 legitimate ones (55.69%). "
+     "Sensitivity analysis on the deduplicated subset (5,849 rows) shifts this to 51.62% / 48.38%."),
     ("There is nothing missing to fill in.",
      "All 342,705 cells hold a value. Any imputation here would have meant inventing data, so the right move was to "
      "run the audit, report zero, and leave the file alone."),
-    ("A valid certificate is the strongest single sign of a real site (r = 0.69).",
-     "61.7% of phishing sites have an invalid or missing certificate, compared with 9.3% of legitimate sites. "
-     "On the other side, 90.4% of legitimate sites present a valid one."),
-    ("Links that point off-site are the clearest phishing sign (r = 0.68).",
-     "65.7% of phishing sites send anchor links outside their own domain, against 0.7% of legitimate sites. "
-     "On this sample the feature comes close to separating the two classes by itself."),
+    ("A valid certificate is the strongest single sign of a real site (r = 0.71).",
+     "62.3% of phishing sites in the full dataset have an invalid or missing certificate, compared with 8.2% "
+     "of legitimate sites. On the other side, 91.4% of legitimate sites present a valid one."),
+    ("Links that point off-site are a very strong phishing sign (r = 0.69).",
+     "66.3% of phishing sites send anchor links outside their own domain, against 0.6% of legitimate sites. "
+     "This feature provides a very clean separation between the two classes."),
     ("A hyphen in the domain is common, which is exactly the problem.",
-     "Every phishing site in the sample is coded −1 for Has_Prefix_Suffix, but so are 75.2% of legitimate sites. "
-     "With r = 0.38 the feature describes most of the data and separates very little of it."),
+     "Every phishing site in the sample is coded −1 for Has_Prefix_Suffix, but so are 76.2% of legitimate sites. "
+     "With r = 0.35 the feature describes most of the data and separates very little of it."),
     ("Traffic rank carries real signal.",
-     "65.7% of legitimate sites have positive web traffic, against 32.5% of phishing sites (r = 0.28). Popularity "
+     "70.2% of legitimate sites have positive web traffic, against 30.8% of phishing sites (r = 0.35). Popularity "
      "is hard to fake quickly, which fits the rest of the pattern."),
     ("Some columns tell you nothing.",
-     "RightClick_Disabled is coded 1 for 94.9% of phishing and 95.3% of legitimate sites. PopUp_Window (r = −0.02), "
-     "Uses_Iframe (r = −0.01) and Favicon_From_Domain (r = −0.03) are no better. Overall, 18 of the 30 features "
-     "sit below |r| = 0.10, and 12 of those below 0.05."),
-    ("The most spread-out column carries almost no signal.",
-     "Domain_Age has the largest standard deviation in the file, 1.00, with the rows split 2,862 / 2,987 between "
-     "its two codes. Its correlation with the class is r ≈ 0.06."),
+     "RightClick_Disabled is coded 1 for 95.4% of phishing and 95.9% of legitimate sites. PopUp_Window (r = +0.00), "
+     "Uses_Iframe (r = −0.00) and Favicon_From_Domain (r = −0.00) are no better. Overall, 18 of the 30 features "
+     "sit below |r| = 0.10, and 11 of those below 0.05."),
+    ("High variation does not imply predictive power.",
+     "Domain_Age has a standard deviation of 1.00 in the full file, split 5,189 / 5,866 between its two observed "
+     "codes. However, its correlation with the class is only r ≈ 0.12."),
     ("Counting every failed check is a weaker test than it looks.",
-     "Phishing sites average 10.50 risk signals and legitimate sites 8.10, a gap of 2.4. More tellingly, 64.1% of "
-     "phishing sites and 42.1% of legitimate sites land in the same 7–11 band."),
+     "Phishing sites average 10.41 risk signals and legitimate sites 7.71, a gap of 2.7. More tellingly, "
+     "many sites from both classes overlap in the mid-range of signal counts."),
     ("Recently registered domains lean phishing.",
-     "Domain_Registration_Length correlates negatively (r = −0.22). Phishing domains average −0.10 on this feature, "
-     "legitimate domains −0.52."),
+     "Domain_Registration_Length correlates negatively (r = −0.23). Phishing domains average −0.10 on this feature, "
+     "legitimate domains −0.53."),
     ("The target has two values, not three.",
      "Result contains only −1 and 1. Some descriptions of this dataset mention a 0 class for suspicious sites, but "
      "this file has none."),
@@ -162,13 +162,13 @@ def build_html(draft: bool):
 
     code_shots = "\n".join([
         shot_block("Data loading and inspection", "01_loading.png", "Screenshot of the loading / head / info cells"),
-        shot_block("Data cleaning — duplicates", "02_cleaning_duplicates.png", "Screenshot of the duplicate removal cell and output"),
+        shot_block("Data cleaning — duplicate records", "02_cleaning_duplicates.png", "Screenshot of the duplicate analysis cell and output"),
         shot_block("Missing values and dtypes", "03_missing_dtypes.png", "Screenshot of the missing-value and dtype cells"),
         shot_block("Descriptive statistics", "04_statistics.png", "Screenshot of the statistics table"),
         shot_block("Correlation analysis", "05_correlation.png", "Screenshot of the correlation ranking"),
     ])
     out_shots = "\n".join([
-        shot_block("Notebook output — class balance before and after cleaning", "06_output_balance.png", "Screenshot of the class balance output"),
+        shot_block("Notebook output — class balance, full vs deduplicated", "06_output_balance.png", "Screenshot of the class balance output"),
         shot_block("Notebook output — evidence behind the insights", "07_output_insights.png", "Screenshot of the insights evidence cell"),
         shot_block("Execution log — every code cell completed without error", "08_execution_log.png", "Screenshot of the full run log"),
     ])
@@ -333,7 +333,9 @@ legitimate, so the prediction task is binary even though the inputs are not.</p>
   <div><div class="v">782 KB</div><div class="l">File size</div></div>
   <div><div class="v">0</div><div class="l">Missing cells</div></div>
 </div>
-<p>That comes to 342,705 cells in total. Removing the 5,206 duplicate rows left 5,849 records for the analysis.</p>
+<p>That comes to 342,705 cells in total. 5,206 of the rows (47.1%) repeat a feature vector that already appears in
+the file; the primary analysis keeps all 11,055 records, and a deduplicated copy of 5,849 rows is used only as a
+sensitivity check (section 11.2).</p>
 
 <h2>8. Features / Columns Description</h2>
 <table>
@@ -347,7 +349,7 @@ legitimate, so the prediction task is binary even though the inputs are not.</p>
   <li><strong>Dataset selection.</strong> A Kaggle-hosted cybersecurity dataset with at least 500 rows and several numeric features, so that every required chart type has something to show.</li>
   <li><strong>Data loading.</strong> Pandas <code>read_csv</code>, with a fallback that downloads and parses the official UCI ARFF archive if the CSV is missing.</li>
   <li><strong>Data understanding.</strong> Head, tail, a random sample, <code>info()</code>, shape, dtypes and distinct-value counts.</li>
-  <li><strong>Data cleaning.</strong> Missing-value audit, duplicate removal, dtype narrowing to <code>int8</code>, column renaming and a value-domain check.</li>
+  <li><strong>Data cleaning.</strong> Missing-value audit, duplicate-record analysis (full file kept as primary, deduplicated copy as sensitivity), dtype narrowing to <code>int8</code>, column renaming and a value-domain check.</li>
   <li><strong>EDA and statistics.</strong> Descriptive statistics, interpretation of mean, median, mode and standard deviation, then a correlation ranking.</li>
   <li><strong>Visualization.</strong> The ten required chart types, each labeled and interpreted.</li>
   <li><strong>Insight extraction.</strong> Twelve findings, each tied to a number the notebook actually computed.</li>
@@ -366,10 +368,13 @@ rows, 31 columns), the empty cells (none) and the value range (everything inside
 Filling gaps that are not there would mean making up observations, and every statistic after that point would
 rest on invented values.</p>
 <h3>11.2 Duplicate records</h3>
-<p>This turned out to be the biggest problem in the file. 5,206 rows (47.1%) were exact copies of another row,
-spread over 2,637 duplicate groups, and removing them left 5,849 records. The copies were not spread evenly
-across the classes: 3,327 of them were legitimate and 1,879 were phishing. Because of that, deduplication moved
-the split from 44.31% / 55.69% to 51.62% / 48.38%. A second check after removal found none left.</p>
+<p>This turned out to be the biggest question in the file. 5,206 rows (47.1%) repeat a feature vector that already
+appears somewhere else, spread over 2,637 repeated groups and leaving 5,849 distinct vectors. The dataset carries
+no website identifier, so a repeated row might be the same site recorded twice or a different site with identical
+measurements — there is no way to tell from the file alone. The repeats are also not spread evenly: 3,327 of them
+are legitimate rows and only 1,879 phishing, so dropping them would move the class split from 44.31% / 55.69% to
+51.62% / 48.38%. Because of both facts, the primary analysis keeps all 11,055 records and the deduplicated copy
+(5,849 rows) is reported only as a labelled sensitivity check wherever it appears.</p>
 <h3>11.3 Data types</h3>
 <p>Every column was already an integer. There were no numbers stored as text and no dates stored as strings,
 since the dataset has no date column at all. I narrowed the dtype from <code>int64</code> to <code>int8</code>.
@@ -385,10 +390,10 @@ so there was nothing out of range to correct. One structural point is worth reco
 Some descriptions of this dataset mention a “suspicious” class coded 0, but it does not appear in this file.</p>
 
 <h2>12. Exploratory Data Analysis</h2>
-<p>The cleaned data has 3,019 phishing sites (51.62%) against 2,830 legitimate ones (48.38%), close enough to
-balanced that no resampling was needed. Two properties of the data shaped the rest of the work. The features are
-ternary codes, not continuous measurements. And a lot of them barely move: RightClick_Disabled is 1 for 95.1% of
-sites, Uses_Iframe for 89.3%, Has_Prefix_Suffix for 88.0% and Uses_Redirect for 86.8%.</p>
+<p>The full dataset has 4,898 phishing sites (44.31%) against 6,157 legitimate ones (55.69%) — mild enough that no
+resampling was needed. Two properties of the data shaped the rest of the work. The features are
+ternary codes, not continuous measurements. And a lot of them barely move: RightClick_Disabled is 1 for 95.7% of
+sites, Uses_Iframe for 90.8%, Has_Prefix_Suffix for −1 86.7% and Uses_Redirect for 0 88.4%.</p>
 <p>A three-level code gives a histogram or a violin plot almost nothing to show, so for the distribution charts I
 built one extra column. <strong>Risk_Signals</strong> counts how many features in a row are coded −1. It is a
 derived variable and is labeled that way everywhere it appears, because it is not part of the original
@@ -398,29 +403,29 @@ dataset.</p>
 <p>For every feature the notebook reports mean, median, mode, minimum, maximum, range, standard deviation and
 variance, using the usual formula for the mean:</p>
 <p style="text-align:center"><code>mean = Σx / n</code></p>
-<p>SSL_State is a good example. Its mean is 0.25 across the whole dataset, −0.47 among phishing sites and 0.81
+<p>SSL_State is a good example. Its mean is 0.25 across the whole dataset, −0.48 among phishing sites and 0.83
 among legitimate ones. The sign carries the meaning here. Because the codes are ordinal, the mean is a net
 direction of evidence rather than a quantity with units.</p>
 <p>Median and mode guard against the mean being dragged around by a lopsided distribution. Risk_Signals has a mean
-of 9.34 and a median of 9, so it leans slightly to the right and the median is the better description of a typical
+of 8.90 and a median of 8, so it leans slightly to the right and the median is the better description of a typical
 row. The mode is useful for the opposite reason: where one value dominates, the feature has almost no room left to
 separate anything.</p>
-<p>Standard deviation shows spread. Domain_Age has the largest possible value, 1.00, split 2,862 / 2,987 across
-its two observed codes, while Uses_Redirect has the smallest at about 0.34. Spread on its own says nothing about
-usefulness. Domain_Age is the most variable column in the file and correlates with the class at only r ≈ 0.06.</p>
+<p>Standard deviation shows spread. Domain_Age has the largest possible value, 1.00, split 5,189 / 5,866 across
+its two observed codes, while Uses_Redirect has the smallest at about 0.32. Spread on its own says nothing about
+usefulness. Domain_Age is the most variable column in the file and correlates with the class at only r ≈ 0.12.</p>
 <p>The correlation ranking against the class label (Pearson r) came out as follows.</p>
 <table>
 <tr><th>Feature</th><th>r</th><th>Interpretation</th></tr>
-<tr><td>SSL_State</td><td>+0.69</td><td>Strongest single signal; valid certificates indicate legitimacy</td></tr>
-<tr><td>External_Anchor_URL</td><td>+0.68</td><td>Off-site anchor links strongly indicate phishing</td></tr>
-<tr><td>Has_Prefix_Suffix</td><td>+0.38</td><td>Hyphen in domain; common in phishing but also in legitimate sites</td></tr>
+<tr><td>SSL_State</td><td>+0.71</td><td>Strongest single signal; valid certificates indicate legitimacy</td></tr>
+<tr><td>External_Anchor_URL</td><td>+0.69</td><td>Off-site anchor links strongly indicate phishing</td></tr>
+<tr><td>Has_Prefix_Suffix</td><td>+0.35</td><td>Hyphen in domain; common in phishing but also in legitimate sites</td></tr>
+<tr><td>Web_Traffic</td><td>+0.35</td><td>Popular sites are usually legitimate</td></tr>
 <tr><td>Has_Sub_Domain</td><td>+0.30</td><td>Deep sub-domain nesting leans phishing</td></tr>
-<tr><td>Web_Traffic</td><td>+0.28</td><td>Popular sites are usually legitimate</td></tr>
-<tr><td>Server_Form_Handler</td><td>+0.28</td><td>Blank or foreign form handlers lean phishing</td></tr>
-<tr><td>External_Links_In_Tags</td><td>+0.24</td><td>Off-site links in meta/script tags</td></tr>
-<tr><td>External_Request_URL</td><td>+0.24</td><td>External resource requests</td></tr>
-<tr><td>Domain_Registration_Length</td><td>−0.22</td><td>Short registration periods lean phishing</td></tr>
-<tr><td>Google_Indexed / In_Statistical_Report / Has_IP_Address</td><td>+0.11 … +0.12</td><td>Weak</td></tr>
+<tr><td>External_Request_URL</td><td>+0.25</td><td>External resource requests</td></tr>
+<tr><td>External_Links_In_Tags</td><td>+0.25</td><td>Off-site links in meta/script tags</td></tr>
+<tr><td>Domain_Registration_Length</td><td>−0.23</td><td>Short registration periods lean phishing</td></tr>
+<tr><td>Server_Form_Handler</td><td>+0.22</td><td>Blank or foreign form handlers lean phishing</td></tr>
+<tr><td>Google_Indexed / In_Statistical_Report / Has_IP_Address</td><td>+0.08 … +0.13</td><td>Weak</td></tr>
 <tr><td>Remaining 18 features</td><td>|r| &lt; 0.10</td><td>Little or no linear signal</td></tr>
 </table>
 
@@ -439,10 +444,10 @@ usefulness. Domain_Age is the most variable column in the file and correlates wi
 
 <h2>18. Major Findings</h2>
 <ul>
-  <li><strong>Data quality took most of the effort.</strong> Nearly half the file was duplicated, and the extra rows were mostly legitimate ones. Left in place, they would have pushed every later statistic in the wrong direction without any error appearing.</li>
-  <li><strong>Two features do most of the work.</strong> SSL state (r = 0.69) and external anchor URLs (r = 0.68) separate the classes better than anything else in the file.</li>
-  <li><strong>Picking features beats adding them up.</strong> Counting every failed check gives 10.50 against 8.10 with a large overlap, while the two strongest columns on their own separate them much better.</li>
-  <li><strong>A lot of the columns are noise.</strong> 18 of the 30 features sit below |r| = 0.10, and 12 of those below 0.05.</li>
+  <li><strong>Almost half the records repeat a feature vector, and that is a caution rather than a fix.</strong> 47.1% of the rows repeat one already present, mostly legitimate ones. With no website identifiers we cannot call them duplicate sites, so the primary analysis keeps all 11,055 records and the deduplicated view appears only as a sensitivity check.</li>
+  <li><strong>Two features do most of the work.</strong> SSL state (r = 0.71) and external anchor URLs (r = 0.69) separate the classes better than anything else in the file.</li>
+  <li><strong>Picking features beats adding them up.</strong> Counting every failed check gives 10.41 against 7.71 with a large overlap, while the two strongest columns on their own separate them much better.</li>
+  <li><strong>A lot of the columns are noise.</strong> 18 of the 30 features sit below |r| = 0.10, and 11 of those below 0.05.</li>
   <li><strong>Variance is not the same as usefulness.</strong> The most variable column in the file is one of the least informative.</li>
 </ul>
 
@@ -452,8 +457,8 @@ usefulness. Domain_Age is the most variable column in the file and correlates wi
 <h2>20. Challenges and Solutions</h2>
 <table>
 <tr><th style="width:38%">Challenge</th><th>Solution</th></tr>
-<tr><td>Almost half the records were exact duplicates, which would inflate frequencies and bias the class proportions.</td>
-    <td>Counted them, removed them, checked that none remained, and compared the class balance before and after so the size of the bias could be stated rather than guessed.</td></tr>
+<tr><td>Almost half the records repeat a feature vector, and it is unclear whether they are the same website twice.</td>
+    <td>Counted and characterised the repeats, kept the full 11,055 rows for the primary analysis, and reported the deduplicated split (51.62% / 48.38%) beside the original (44.31% / 55.69%) so the effect of the choice is visible rather than assumed.</td></tr>
 <tr><td>Every feature is a three-level code, so histograms, scatter plots and violin plots have very little visual resolution.</td>
     <td>Built a documented derived variable (Risk_Signals) and added jitter to the scatter plots, so the charts show something readable without inventing data.</td></tr>
 <tr><td>The original dataset has no missing values, yet the task requires missing-value handling.</td>
@@ -466,16 +471,19 @@ usefulness. Domain_Age is the most variable column in the file and correlates wi
 
 <h2>21. Conclusion</h2>
 <p>This analysis looked at the UCI Phishing Websites dataset: 11,055 websites described by 30 integer-coded
-security features. The first real finding was about the data rather than the websites. 47.1% of the records were
-exact duplicates, and removing them moved the class balance from 44.31% / 55.69% to 51.62% / 48.38%. There were no
-missing values and no out-of-range codes, so the honest cleaning steps were to drop the duplicates, narrow the
-integer types, fix three misspelled column names, and say plainly that no imputation was needed. Adding one for
-appearance would have been worse than leaving it out.</p>
-<p>On the statistics, phishing detection from URL and page structure looks very feasible. SSL state (r = 0.69) and
-external anchor URLs (r = 0.68) are strong and largely independent of each other, and the domain-structure features
-follow at r ≈ 0.24–0.38. The other side of that result matters just as much: 18 of the 30 features sit below
+security features. The first real finding was about the data rather than the websites. 47.1% of the records repeat
+a feature vector that already appears in the file, and because the dataset carries no website identifier there was
+no way to prove they are the same site twice. The primary analysis therefore keeps all 11,055 records and reports
+44.31% phishing / 55.69% legitimate; the deduplicated copy (5,849 rows) shifts that to 51.62% / 48.38% and is
+shown only as a sensitivity check. There were no missing values and no out-of-range codes, so the honest cleaning
+steps were to narrow the integer types, fix three misspelled column names, and say plainly that no imputation was
+needed. Adding one for appearance would have been worse than leaving it out.</p>
+<p>On the statistics, phishing detection from URL and page structure looks very feasible. SSL state (r = 0.71) and
+external anchor URLs (r = 0.69) are strong and largely independent of each other, and the domain-structure features
+follow at r ≈ 0.22–0.35. The other side of that result matters just as much: 18 of the 30 features sit below
 |r| = 0.10, and a large standard deviation on its own, as with Domain_Age at the maximum possible value but
-r ≈ 0.06, does not make a column predictive. Counting every failed check separated the classes only weakly, which
+r ≈ 0.12, does not make a column predictive. Counting every failed check separated the classes only moderately
+(means 10.41 versus 7.71, with heavy overlap), which
 is the clearest argument in this report for choosing features carefully instead of adding them up. In practice
 these checks are cheap to compute. A browser, a mail gateway or a SOC triage queue could run them on any URL, and
 the seven features with |r| ≥ 0.24 are a sensible starting set for a baseline classifier in the next stage.</p>
